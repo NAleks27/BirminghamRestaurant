@@ -36,6 +36,10 @@
 		5B7A8C0E2A6DEB2800DAB3B3 /* TakeAwayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7A8C0D2A6DEB2800DAB3B3 /* TakeAwayView.swift */; };
 		5B7A8C102A6EBA0100DAB3B3 /* TakeAwayMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7A8C0F2A6EBA0100DAB3B3 /* TakeAwayMainView.swift */; };
 		5B7A8C132A6EBCC500DAB3B3 /* TakeAwayOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7A8C122A6EBCC500DAB3B3 /* TakeAwayOrderView.swift */; };
+		5B7A8C152A6EC3B700DAB3B3 /* TakeAwayItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7A8C142A6EC3B700DAB3B3 /* TakeAwayItemRow.swift */; };
+		5B7A8C172A6EC4B000DAB3B3 /* TakeAwayMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7A8C162A6EC4B000DAB3B3 /* TakeAwayMenuView.swift */; };
+		5B7A8C192A6EC5B300DAB3B3 /* TakeAwayItemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7A8C182A6EC5B300DAB3B3 /* TakeAwayItemDetails.swift */; };
+		5B7A8C1B2A6EC66D00DAB3B3 /* TakeAwayCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7A8C1A2A6EC66D00DAB3B3 /* TakeAwayCheckoutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +73,10 @@
 		5B7A8C0D2A6DEB2800DAB3B3 /* TakeAwayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeAwayView.swift; sourceTree = "<group>"; };
 		5B7A8C0F2A6EBA0100DAB3B3 /* TakeAwayMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeAwayMainView.swift; sourceTree = "<group>"; };
 		5B7A8C122A6EBCC500DAB3B3 /* TakeAwayOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeAwayOrderView.swift; sourceTree = "<group>"; };
+		5B7A8C142A6EC3B700DAB3B3 /* TakeAwayItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeAwayItemRow.swift; sourceTree = "<group>"; };
+		5B7A8C162A6EC4B000DAB3B3 /* TakeAwayMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeAwayMenuView.swift; sourceTree = "<group>"; };
+		5B7A8C182A6EC5B300DAB3B3 /* TakeAwayItemDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeAwayItemDetails.swift; sourceTree = "<group>"; };
+		5B7A8C1A2A6EC66D00DAB3B3 /* TakeAwayCheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeAwayCheckoutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,7 +185,11 @@
 			isa = PBXGroup;
 			children = (
 				5B7A8C0F2A6EBA0100DAB3B3 /* TakeAwayMainView.swift */,
+				5B7A8C162A6EC4B000DAB3B3 /* TakeAwayMenuView.swift */,
+				5B7A8C142A6EC3B700DAB3B3 /* TakeAwayItemRow.swift */,
+				5B7A8C182A6EC5B300DAB3B3 /* TakeAwayItemDetails.swift */,
 				5B7A8C122A6EBCC500DAB3B3 /* TakeAwayOrderView.swift */,
+				5B7A8C1A2A6EC66D00DAB3B3 /* TakeAwayCheckoutView.swift */,
 			);
 			path = TakeAwayViews;
 			sourceTree = "<group>";
@@ -257,18 +269,22 @@
 				5B6B83BD2A6C7DFF00D1C653 /* CheckoutView.swift in Sources */,
 				5B7A8C132A6EBCC500DAB3B3 /* TakeAwayOrderView.swift in Sources */,
 				5B7A8C042A6DDE7C00DAB3B3 /* ReservationView.swift in Sources */,
+				5B7A8C172A6EC4B000DAB3B3 /* TakeAwayMenuView.swift in Sources */,
 				5B7A8C102A6EBA0100DAB3B3 /* TakeAwayMainView.swift in Sources */,
 				5B7A8C082A6DDF4100DAB3B3 /* OrderHistoryDetailsView.swift in Sources */,
 				5B7A8C0C2A6DE4C600DAB3B3 /* EnterTableNumberView.swift in Sources */,
 				5B7A8C022A6DDA5600DAB3B3 /* Contacts.swift in Sources */,
+				5B7A8C152A6EC3B700DAB3B3 /* TakeAwayItemRow.swift in Sources */,
 				5B6B83B72A6C6B9D00D1C653 /* ItemDetails.swift in Sources */,
 				5B6B83B32A6C621000D1C653 /* MenuView.swift in Sources */,
 				5B7A8BF62A6DC7A100DAB3B3 /* Basket.swift in Sources */,
 				5B7A8BF82A6DCA6700DAB3B3 /* ConfirmationBasketView.swift in Sources */,
 				5B7A8BFE2A6DD90B00DAB3B3 /* ButtonsMainScreen.swift in Sources */,
 				5B6B83BB2A6C74F400D1C653 /* MenuMainView.swift in Sources */,
+				5B7A8C192A6EC5B300DAB3B3 /* TakeAwayItemDetails.swift in Sources */,
 				5B6B839D2A6C5F3700D1C653 /* BirminghamRestaurantApp.swift in Sources */,
 				5B6B83B52A6C640A00D1C653 /* ItemRow.swift in Sources */,
+				5B7A8C1B2A6EC66D00DAB3B3 /* TakeAwayCheckoutView.swift in Sources */,
 				5B6B83AD2A6C5FAD00D1C653 /* Order.swift in Sources */,
 				5B6B83BF2A6C8D1700D1C653 /* BasketView.swift in Sources */,
 				5B7A8BFA2A6DD82500DAB3B3 /* AppMainView.swift in Sources */,

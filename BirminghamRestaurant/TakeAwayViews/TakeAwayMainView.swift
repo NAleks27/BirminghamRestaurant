@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct TakeAwayMainView: View {
-    @EnvironmentObject var basket: Basket
+    @StateObject var order = Order()
     
     var body: some View {
         TabView {
-            MenuView()
+            TakeAwayMenuView(order: order)
                 .tabItem {
                     Label("Menu", systemImage: "menucard.fill")
                 }
             
-            TakeAwayOrderView()
+            TakeAwayOrderView(order: order)
                 .tabItem {
                     Label("Order", systemImage: "fork.knife.circle.fill")
                 }
-                .badge(basket.items.count)
+                .badge(order.items.count)
         }
     }
 }
@@ -29,6 +29,5 @@ struct TakeAwayMainView: View {
 struct TakeAwayMainView_Previews: PreviewProvider {
     static var previews: some View {
         TakeAwayMainView()
-            .environmentObject(Basket())
     }
 }

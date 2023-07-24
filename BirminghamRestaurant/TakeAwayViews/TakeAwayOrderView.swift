@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct TakeAwayOrderView: View {
-    @EnvironmentObject var basket: Basket
-    
+struct TakeAwayOrderView: View {    
     @State private var showingChekoutView = false
     @State private var isCallingWaiter = false
     
+    @ObservedObject var order: Order
+    
     var body: some View {
-        NavigationStack {
+        VStack {
             ZStack {
                 Image("stack-o-pancakes")
                     .resizable()
@@ -22,14 +22,14 @@ struct TakeAwayOrderView: View {
                 Color.black
                     .opacity(0.6)
                 
-                Text("My current order #\(basket.total)")
+                Text("My current order #\(order.total)")
                     .foregroundColor(.white)
                     .font(.title)
             }
             .frame(width: .infinity, height: 200)
             
             List {
-                ForEach(basket.items) { item in
+                ForEach(order.items) { item in
                     HStack {
                         Image(item.mainImage)
                             .resizable()
@@ -44,10 +44,10 @@ struct TakeAwayOrderView: View {
                 }
                 .onDelete(perform: deleteItems)
             }
-            
+                        
             Section {
                 HStack {
-                    Text("Check sum: \(basket.total)$")
+                    Text("Check sum: \(order.total)$")
                     Spacer()
                     
                     Button("Waiter 🔔") {
@@ -62,24 +62,23 @@ struct TakeAwayOrderView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .tint(.green)
-                    .disabled(basket.items.isEmpty)
+                    .disabled(order.items.isEmpty)
                 }
             }
             .padding(10)
         }
         .sheet(isPresented: $showingChekoutView) {
-            CheckoutView()
+            TakeAwayCheckoutView(order: order)
         }
     }
     
     func deleteItems(at offsets: IndexSet) {
-        basket.items.remove(atOffsets: offsets)
+        order.items.remove(atOffsets: offsets)
     }
 }
 
 struct TakeAwayOrderView_Previews: PreviewProvider {
     static var previews: some View {
-        TakeAwayOrderView()
-            .environmentObject(Basket())
+        TakeAwayOrderView(order: Order())
     }
 }
