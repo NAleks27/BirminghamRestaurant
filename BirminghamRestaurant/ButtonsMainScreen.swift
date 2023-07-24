@@ -24,7 +24,7 @@ struct ButtonsMainScreen: View {
             case "OrdersHistoryView": OrdersHistoryView()
             case "ReservationView": ReservationView()
             case "TakeAwayMainView": TakeAwayMainView()
-            case "EnterTableNumberView": EnterTableNumberView()
+            case "SelectTableView": SelectTableView()
             case "ContactsView": ContactsView()
             default: ContentView()
             }

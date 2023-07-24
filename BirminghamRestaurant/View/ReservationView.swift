@@ -45,11 +45,10 @@ struct ReservationView: View {
     @State var tableNumber = 0
     
     let columns = [
-        GridItem(.adaptive(minimum: 180))
+        GridItem(.adaptive(minimum: 180, maximum: 180))
     ]
         
     var body: some View {
-        NavigationView {
             ZStack {
                 Image("MainPhoto")
                     .resizable()
@@ -105,10 +104,7 @@ struct ReservationView: View {
                     }
                 }
             }
-            .navigationTitle("TABLE RESERV")
             .foregroundColor(.white)
-            .navigationBarTitleDisplayMode(.inline)
-        }
     }
 }
 

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EnterTableNumberView: View {
+struct SelectTableView: View {
     @StateObject var order = Order()
         
     var body: some View {
@@ -22,7 +22,7 @@ struct EnterTableNumberView: View {
             
             Button {
             } label: {
-                NavigationLink("OK", destination: InRestaurantOrderMainView(order: order))
+                NavigationLink("OK", destination: MainView(order: order))
             }
             .buttonStyle(.bordered)
             .foregroundColor(.brown)
@@ -31,8 +31,8 @@ struct EnterTableNumberView: View {
     }
 }
 
-struct EnterTableNumberView_Previews: PreviewProvider {
+struct SelectTableView_Previews: PreviewProvider {
     static var previews: some View {
-        EnterTableNumberView()
+        SelectTableView()
     }
 }

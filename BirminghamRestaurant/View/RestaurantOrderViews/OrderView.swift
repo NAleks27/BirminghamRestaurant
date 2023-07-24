@@ -1,21 +1,20 @@
 //
-//  OrderView.swift
+//  InRestaurantOrderView.swift
 //  BirminghamRestaurant
 //
-//  Created by Aleksey Nosik on 22.07.2023.
+//  Created by Aleksey Nosik on 24.07.2023.
 //
 
 import SwiftUI
 
 struct OrderView: View {
-    @EnvironmentObject var order: Order
+    @ObservedObject var order: Order
     
     @State private var showingChekoutView = false
     @State private var isCallingWaiter = false
-
     
     var body: some View {
-        NavigationStack {
+        VStack {
             ZStack {
                 Image("stack-o-pancakes")
                     .resizable()
@@ -68,14 +67,13 @@ struct OrderView: View {
             .padding(10)
         }
         .sheet(isPresented: $showingChekoutView) {
-            CheckoutView()
+            CheckoutView(order: order)
         }
     }
 }
 
 struct OrderView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderView()
-            .environmentObject(Order())
+        OrderView(order: Order())
     }
 }

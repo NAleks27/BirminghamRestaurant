@@ -40,7 +40,7 @@ struct AppMainView: View {
                         
                         HStack(spacing: 30) {
                             ButtonsMainScreen(text: "Enter table number",
-                                              view: "EnterTableNumberView")
+                                              view: "SelectTableView")
                             
                             ButtonsMainScreen(text: "Contacts",
                                               view: "ContactsView")

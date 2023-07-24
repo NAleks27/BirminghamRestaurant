@@ -1,15 +1,14 @@
 //
-//  ItemDetails.swift
+//  InRestaurantOrderItemDetailsView.swift
 //  BirminghamRestaurant
 //
-//  Created by Aleksey Nosik on 22.07.2023.
+//  Created by Aleksey Nosik on 24.07.2023.
 //
 
 import SwiftUI
 
-struct ItemDetails: View {
-    @EnvironmentObject var basket: Basket
-//    @EnvironmentObject var order: Order
+struct ItemDetailsView: View {
+    @ObservedObject var basket: Basket
     
     let item: MenuItem
     
@@ -42,10 +41,8 @@ struct ItemDetails: View {
     }
 }
 
-struct ItemDetails_Previews: PreviewProvider {
+struct ItemDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemDetails(item: MenuItem.example)
-//            .environmentObject(Order())
-            .environmentObject(Basket())
+        ItemDetailsView(basket: Basket(), item: MenuItem.example)
     }
 }

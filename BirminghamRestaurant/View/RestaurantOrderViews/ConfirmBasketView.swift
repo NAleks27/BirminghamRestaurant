@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct InRestaurantOrderConfBaskView: View {
+struct ConfirmBasketView: View {
     @ObservedObject var basket: Basket
     @ObservedObject var order: Order
 
@@ -44,8 +44,8 @@ struct InRestaurantOrderConfBaskView: View {
     }
 }
 
-struct InRestaurantOrderConfBaskView_Previews: PreviewProvider {
+struct ConfirmBasketView_Previews: PreviewProvider {
     static var previews: some View {
-        InRestaurantOrderConfBaskView(basket: Basket(), order: Order())
+        ConfirmBasketView(basket: Basket(), order: Order())
     }
 }

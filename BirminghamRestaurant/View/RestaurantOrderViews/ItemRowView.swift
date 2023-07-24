@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct InRestaurantOrderItemRowView: View {
+struct ItemRowView: View {
     @ObservedObject var basket: Basket
     
     @State private var isFavorite = false
@@ -77,8 +77,8 @@ struct InRestaurantOrderItemRowView: View {
     }
 }
 
-struct InRestaurantOrderItemRowView_Previews: PreviewProvider {
+struct ItemRowView_Previews: PreviewProvider {
     static var previews: some View {
-        InRestaurantOrderItemRowView(basket: Basket(), item: MenuItem.example)
+        ItemRowView(basket: Basket(), item: MenuItem.example)
     }
 }

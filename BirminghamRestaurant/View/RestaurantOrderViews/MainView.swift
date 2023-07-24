@@ -1,30 +1,31 @@
 //
-//  MainView.swift
+//  InRestaurantOrderView.swift
 //  BirminghamRestaurant
 //
-//  Created by Aleksey Nosik on 22.07.2023.
+//  Created by Aleksey Nosik on 24.07.2023.
 //
 
 import SwiftUI
 
-struct MenuMainView: View {
-    @EnvironmentObject var basket: Basket
-    @EnvironmentObject var order: Order
+struct MainView: View {
+    @ObservedObject var order: Order
+    
+    @StateObject var basket = Basket()
     
     var body: some View {
         TabView {
-            MenuView()
+            MenuView(basket: basket)
                 .tabItem {
                     Label("Menu", systemImage: "menucard.fill")
                 }
             
-            BasketView()
+            BasketView(basket: basket, order: order)
                 .tabItem {
                     Label("Basket", systemImage: "cart.fill")
                 }
                 .badge(basket.items.count)
             
-            OrderView()
+            OrderView(order: order)
                 .tabItem {
                     Label("My Table", systemImage: "fork.knife.circle.fill")
                 }
@@ -33,10 +34,8 @@ struct MenuMainView: View {
     }
 }
 
-struct MenuMainView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuMainView()
-            .environmentObject(Order())
-            .environmentObject(Basket())
+        MainView(order: Order())
     }
 }

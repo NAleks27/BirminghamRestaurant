@@ -1,21 +1,20 @@
 //
-//  AddingItemsView.swift
+//  InRestaurantOrderBasketView.swift
 //  BirminghamRestaurant
 //
-//  Created by Aleksey Nosik on 23.07.2023.
+//  Created by Aleksey Nosik on 24.07.2023.
 //
 
 import SwiftUI
 
 struct BasketView: View {
-    @EnvironmentObject var basket: Basket
+    @ObservedObject var basket: Basket
+    @ObservedObject var order: Order
 
     @State private var showingConfirmationBasketView = false
-    
-    @State private var mainOrder = [MenuItem]()
-    
+        
     var body: some View {
-        NavigationStack {
+        VStack {
             ZStack {
                 Image("stack-o-pancakes")
                     .resizable()
@@ -61,7 +60,7 @@ struct BasketView: View {
             .padding(10)
         }
         .sheet(isPresented: $showingConfirmationBasketView) {
-            ConfirmationBasketView()
+            ConfirmBasketView(basket: basket, order: order)
                 .presentationDetents([.fraction(0.2)])
         }
     }
@@ -71,9 +70,8 @@ struct BasketView: View {
     }
 }
 
-struct AddingItemsView_Previews: PreviewProvider {
+struct BasketView_Previews: PreviewProvider {
     static var previews: some View {
-        BasketView()
-            .environmentObject(Basket())
+        BasketView(basket: Basket(), order: Order())
     }
 }

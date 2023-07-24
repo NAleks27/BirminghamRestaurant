@@ -1,23 +1,23 @@
 //
-//  CheckoutView.swift
+//  InRestaurantOrderCheckoutView.swift
 //  BirminghamRestaurant
 //
-//  Created by Aleksey Nosik on 23.07.2023.
+//  Created by Aleksey Nosik on 24.07.2023.
 //
 
 import SwiftUI
 
-
 struct CheckoutView: View {
-    @EnvironmentObject var order: Order
+    @Environment(\.dismiss) var dismiss
+    @ObservedObject var order: Order
+    
     @State private var paymentType = "Cash"
     @State private var addLoyaltyDetails = false
     @State private var loyaltyNumber = ""
+    
     @State private var tipAmount = 10
     @State private var totalTips = 0.0
     @State private var showingPaymentAlert = false
-    
-    @Environment(\.dismiss) var dismiss
     
     let paymentTypes = ["Cash", "Credit Card"]
     let tipAmounts = [0, 10, 15, 20, 25]
@@ -80,7 +80,6 @@ struct CheckoutView: View {
 
 struct CheckoutView_Previews: PreviewProvider {
     static var previews: some View {
-        CheckoutView()
-            .environmentObject(Order())
+        CheckoutView(order: Order())
     }
 }
