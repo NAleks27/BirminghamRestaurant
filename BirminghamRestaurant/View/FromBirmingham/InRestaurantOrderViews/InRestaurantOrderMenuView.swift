@@ -1,25 +1,27 @@
 //
-//  MenuView.swift
+//  InRestaurantOrderMenuViewView.swift
 //  BirminghamRestaurant
 //
-//  Created by Aleksey Nosik on 22.07.2023.
+//  Created by Aleksey Nosik on 24.07.2023.
 //
 
 import SwiftUI
 
-struct MenuView: View {
+struct InRestaurantOrderMenuView: View {
     let menu = Bundle.main.decode([MenuSection].self, from: "menu.json")
     
+    @ObservedObject var basket: Basket
+    
     var body: some View {
-        NavigationStack {
+        NavigationView {
             List {
                 ForEach(menu) { section in
                     Section(section.name) {
                         ForEach(section.items) { item in
                             NavigationLink {
-                                ItemDetails(item: item)
+                                InRestaurantOrderItemDetailsView(basket: basket, item: item)
                             } label: {
-                                ItemRow(item: item)
+                                InRestaurantOrderItemRowView(basket: basket, item: item)
                             }
                         }
                     }
@@ -32,8 +34,8 @@ struct MenuView: View {
     }
 }
 
-struct MenuView_Previews: PreviewProvider {
+struct InRestaurantOrderMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView()
+        InRestaurantOrderMenuView(basket: Basket())
     }
 }

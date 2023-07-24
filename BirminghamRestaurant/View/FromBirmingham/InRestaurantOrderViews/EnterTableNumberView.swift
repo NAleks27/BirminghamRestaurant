@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct EnterTableNumberView: View {
-    @EnvironmentObject var order: Order
-    
-    @State private var table = 1
-    
+    @StateObject var order = Order()
+        
     var body: some View {
         VStack {
-            Picker("Number of table", selection: $table) {
+            Picker("Number of table", selection: $order.number) {
                 ForEach(1..<11, id: \.self) { number in
                     Text("\(number)")
                         .foregroundColor(.brown)
@@ -23,10 +21,8 @@ struct EnterTableNumberView: View {
             .pickerStyle(.wheel)
             
             Button {
-                // ---------------
-                order.number = table
             } label: {
-                NavigationLink("OK", destination: MenuMainView())
+                NavigationLink("OK", destination: InRestaurantOrderMainView(order: order))
             }
             .buttonStyle(.bordered)
             .foregroundColor(.brown)
@@ -38,6 +34,5 @@ struct EnterTableNumberView: View {
 struct EnterTableNumberView_Previews: PreviewProvider {
     static var previews: some View {
         EnterTableNumberView()
-            .environmentObject(Order())
     }
 }
