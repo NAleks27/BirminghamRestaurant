@@ -22,7 +22,7 @@ struct TakeAwayOrderView: View {
                 Color.black
                     .opacity(0.6)
                 
-                Text("My current order #\(order.total)")
+                Text("My current order №\(order.number)")
                     .foregroundColor(.white)
                     .font(.title)
             }
@@ -50,14 +50,8 @@ struct TakeAwayOrderView: View {
                     Text("Check sum: \(order.total)$")
                     Spacer()
                     
-                    Button("Waiter 🔔") {
-                        isCallingWaiter.toggle()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.brown)
-                    .alert("Please wait. The waiter will come as soon as possible.", isPresented: $isCallingWaiter) { }
-                    
-                    Button("Pay check") {
+                    Button("Confirm order") {
+                        order.type = .takeAwayOrder
                         showingChekoutView.toggle()
                     }
                     .buttonStyle(.borderedProminent)

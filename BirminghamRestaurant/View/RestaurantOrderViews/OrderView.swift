@@ -22,7 +22,7 @@ struct OrderView: View {
                 Color.black
                     .opacity(0.6)
                 
-                Text("My current order #\(order.number)")
+                Text("My current table №\(order.tableNumber)")
                     .foregroundColor(.white)
                     .font(.title)
             }

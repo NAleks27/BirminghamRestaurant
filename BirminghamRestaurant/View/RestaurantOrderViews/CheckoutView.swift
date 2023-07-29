@@ -49,16 +49,16 @@ struct CheckoutView: View {
                 }
             }
             
-            Section("Add a tip?") {
-                Picker("Percentage:", selection: $tipAmount) {
-                    ForEach(tipAmounts, id: \.self) {
-                        Text("\($0)%")
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
-            }
+//            Section("Add a tip?") {
+//                Picker("Percentage:", selection: $tipAmount) {
+//                    ForEach(tipAmounts, id: \.self) {
+//                        Text("\($0)%")
+//                    }
+//                }
+//                .pickerStyle(SegmentedPickerStyle())
+//            }
             
-            Section("Total: \(totalPrice)") {
+            Section("Total: \(order.total)$") {
                 Button("Confirm order") {
                     showingPaymentAlert.toggle()
                 }
@@ -68,12 +68,16 @@ struct CheckoutView: View {
         .navigationBarTitleDisplayMode(.inline)
         .alert("Order confirmed", isPresented: $showingPaymentAlert) {
             Button("OK") {
-                order.items = []
+//                order.status = .close
+                order.tranferToArchive()
+//                order.type = .tableOrder
+//                TestOrdersHistoryView.archiveOrders.append(order)
+//                order.items = []
                 dismiss()
             }
         } message: {
-            paymentType == "Cash" ? Text("Your total was \(totalPrice) - thank you! Wait for the waiter.") :
-            Text("Your total was \(totalPrice) - thank you!")
+            paymentType == "Cash" ? Text("Your total was \(order.total)$ - thank you! Wait for the waiter.") :
+            Text("Your total was \(order.total)$ - thank you!")
         }
     }
 }

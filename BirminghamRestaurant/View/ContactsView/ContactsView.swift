@@ -73,7 +73,7 @@ struct ContactsView: View {
     
     private func setRegion(_ coordinates: CLLocationCoordinate2D) {
         region = MKCoordinateRegion(
-            center: coordinate,
+            center: coordinates,
             span: MKCoordinateSpan(latitudeDelta: 0.08, longitudeDelta: 0.08)
         )
     }

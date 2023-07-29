@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class Order: ObservableObject {
+class Order: ObservableObject, Identifiable {
     @Published var items = [MenuItem]()
 
     var total: Int {
@@ -34,6 +34,30 @@ class Order: ObservableObject {
         case close
     }
     
-    var status: StatusOrder = .close
-    var number = 0
+    enum TypeOrder {
+        case takeAwayOrder
+        case tableOrder
+    }
+    
+    var status: StatusOrder = .open
+    var type: TypeOrder = .tableOrder
+    let date = Date.now.formatted(date: .long, time: .omitted)
+    
+    func sortingOrder() {
+        switch self.status {
+        case .open: OrdersHistoryView.currentOrders.append(self)
+        case .close: OrdersHistoryView.archiveOrders.append(self)
+        }
+    }
+    
+    let number = Int.random(in: 1...150)
+    var tableNumber = 0
+    
+    func tranferToArchive() {
+        self.status = .close
+        self.sortingOrder()
+        if !OrdersHistoryView.currentOrders.isEmpty {
+            OrdersHistoryView.currentOrders.removeFirst()
+        }
+    }
 }

@@ -12,7 +12,7 @@ struct SelectTableView: View {
         
     var body: some View {
         VStack {
-            Picker("Number of table", selection: $order.number) {
+            Picker("Number of table", selection: $order.tableNumber) {
                 ForEach(1..<11, id: \.self) { number in
                     Text("\(number)")
                         .foregroundColor(.brown)
@@ -21,6 +21,8 @@ struct SelectTableView: View {
             .pickerStyle(.wheel)
             
             Button {
+//                TestOrdersHistoryView.currentOrders.append(order)
+//                order.sortingOrder()
             } label: {
                 NavigationLink("OK", destination: MainView(order: order))
             }

@@ -13,24 +13,24 @@ struct MainView: View {
     @StateObject var basket = Basket()
     
     var body: some View {
-        TabView {
-            MenuView(basket: basket)
-                .tabItem {
-                    Label("Menu", systemImage: "menucard.fill")
-                }
-            
-            BasketView(basket: basket, order: order)
-                .tabItem {
-                    Label("Basket", systemImage: "cart.fill")
-                }
-                .badge(basket.items.count)
-            
-            OrderView(order: order)
-                .tabItem {
-                    Label("My Table", systemImage: "fork.knife.circle.fill")
-                }
-                .badge(order.items.count)
-        }
+            TabView {
+                MenuView(basket: basket)
+                    .tabItem {
+                        Label("Menu", systemImage: "menucard.fill")
+                    }
+                
+                BasketView(basket: basket, order: order)
+                    .tabItem {
+                        Label("Basket", systemImage: "cart.fill")
+                    }
+                    .badge(basket.items.count)
+                
+                OrderView(order: order)
+                    .tabItem {
+                        Label("My Table", systemImage: "fork.knife.circle.fill")
+                    }
+                    .badge(order.items.count)
+            }
     }
 }
 

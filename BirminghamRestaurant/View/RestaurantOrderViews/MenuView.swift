@@ -26,9 +26,9 @@ struct MenuView: View {
                         }
                     }
                     .foregroundColor(.brown)
-
                 }
             }
+            .navigationTitle("Menu")
             .listStyle(.inset)
         }
     }

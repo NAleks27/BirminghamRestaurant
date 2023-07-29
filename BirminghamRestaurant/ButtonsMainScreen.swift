@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreLocation
 
 struct ButtonsMainScreen: View {
     @EnvironmentObject var order: Order
@@ -30,10 +29,10 @@ struct ButtonsMainScreen: View {
             }
         } label: {
             ZStack {
-                RoundedRectangle(cornerRadius: radius ?? 25)
+                RoundedRectangle(cornerRadius: radius ?? 20)
                     .fill(.brown).brightness(-0.3)
                     .frame(width: (width ?? 150), height: (height ?? 150))
-                    .shadow(radius: 3)
+                    .shadow(radius: 15)
                 
                 VStack(alignment: .leading) {
                     Text(text)

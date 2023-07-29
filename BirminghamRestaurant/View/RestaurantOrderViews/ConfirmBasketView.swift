@@ -32,6 +32,7 @@ struct ConfirmBasketView: View {
 
                     Button("Yes") {
                         order.items += basket.items
+                        order.sortingOrder()
                         dismiss()
                         basket.items = []
                     }
