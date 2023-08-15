@@ -57,6 +57,7 @@ struct ContactsView: View {
                         setRegion(coordinate)
                     }
                     .frame(width: 400, height: 400)
+                    
                                 
                 Divider()
                 Form {
