@@ -10,13 +10,14 @@ import SwiftUI
 struct TakeAwayMainView: View {
     @StateObject var order = Order()
     
+    
     var body: some View {
         TabView {
             TakeAwayMenuView(order: order)
                 .tabItem {
                     Label("Menu", systemImage: "menucard.fill")
                 }
-            
+
             TakeAwayOrderView(order: order)
                 .tabItem {
                     Label("Order", systemImage: "fork.knife.circle.fill")

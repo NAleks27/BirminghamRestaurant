@@ -28,6 +28,7 @@ struct TakeAwayOrderView: View {
             }
             .frame(width: .infinity, height: 200)
             
+            
             List {
                 ForEach(order.items) { item in
                     HStack {

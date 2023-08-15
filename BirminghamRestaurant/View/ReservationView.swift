@@ -1,5 +1,5 @@
 //
-//  ReservationView.swift
+//  NewReservView.swift
 //  BirminghamRestaurant
 //
 //  Created by Aleksey Nosik on 24.07.2023.
@@ -17,7 +17,7 @@ struct TableReserveView: View {
                 ZStack {
                     Image("Table")
                         .resizable()
-                        .frame(width: 120, height: 120)
+                        .frame(width: 110, height: 110)
                         .brightness(-0.3)
                                         
                     Text("Table \(number)")
@@ -27,7 +27,7 @@ struct TableReserveView: View {
                 ZStack {
                     Image("Table")
                         .resizable()
-                        .frame(width: 120, height: 120)
+                        .frame(width: 110, height: 110)
                     
                     Text("Table \(number)")
                         .foregroundColor(.white)
@@ -37,17 +37,19 @@ struct TableReserveView: View {
     }
 }
 
-
 struct ReservationView: View {
+    @Environment(\.dismiss) var dismiss
+    
     @State private var isPresentOrdered = false
     @State private var tapBtn = false
-    @State private var color: Color = .brown
     @State var tableNumber = 0
-    
+
     let columns = [
         GridItem(.adaptive(minimum: 180, maximum: 180))
     ]
-        
+
+    @StateObject var reservTable = Order()
+
     var body: some View {
             ZStack {
                 Image("MainPhoto")
@@ -55,13 +57,13 @@ struct ReservationView: View {
                     .ignoresSafeArea()
                     .scaledToFill()
                     .padding(.leading, 55)
-                
+
                 Color.black
                     .opacity(0.8)
-                
+
                 VStack {
                     Text("CHOOSE A FREE TABLE")
-                    
+
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 20) {
                             ForEach(1..<11) { number in
@@ -83,13 +85,10 @@ struct ReservationView: View {
                             }
                         }
                     }
-                    
+
                     Spacer()
-                    
+
                     Button(tapBtn ? "To order \"Table №\(tableNumber)\"" : "Chose table") {
-//                        let table = Order()
-//                        table.number = tableNumber
-//                        OrdersHistoryView.currentOrders.append(table)
                         isPresentOrdered.toggle()
                     }
                     .frame(width: 300, height: 50)
@@ -98,7 +97,11 @@ struct ReservationView: View {
                     .disabled(tableNumber == 0 ? true : false)
                     .alert("Ordered \"Table\"\(tableNumber)", isPresented: $isPresentOrdered) {
                         Button("Cancel", role: .cancel) { }
-                        Button("OK") { }
+                        Button("OK") {
+                            reservTable.tableNumber = tableNumber
+                            reservTable.sortingOrder()
+                            dismiss()
+                        }
                     } message: {
                         Text("Are you sure?")
                     }
@@ -108,9 +111,8 @@ struct ReservationView: View {
     }
 }
 
-struct TableReservView_Previews: PreviewProvider {
+struct ReservationView_Previews: PreviewProvider {
     static var previews: some View {
         ReservationView()
     }
 }
-

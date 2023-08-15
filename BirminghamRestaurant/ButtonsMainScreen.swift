@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct ButtonsMainScreen: View {
-    @EnvironmentObject var order: Order
-    
     var text: String
-    var view: String?
+    var view: String
     var width: CGFloat?
     var height: CGFloat?
     var radius: CGFloat?

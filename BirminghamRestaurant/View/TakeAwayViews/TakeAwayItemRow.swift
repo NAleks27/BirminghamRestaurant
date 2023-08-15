@@ -9,8 +9,7 @@ import SwiftUI
 
 struct TakeAwayItemRow: View {
     @ObservedObject var order: Order
-
-    @State private var isFavorite = false
+    
     let item: MenuItem
     
     var body: some View {
@@ -25,31 +24,12 @@ struct TakeAwayItemRow: View {
             VStack(alignment: .leading) {
                 Text(item.name)
                     .font(.headline)
-
                 Text("\(item.price)$")
             }
-            .foregroundColor(.brown).brightness(-0.4)
             
             Spacer()
             
             VStack {
-                Button {
-                    isFavorite.toggle()
-                } label: {
-                    if isFavorite {
-                        Image(systemName: "star.fill")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .foregroundColor(.yellow)
-                    } else {
-                        Image(systemName: "star")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .foregroundColor(.yellow)
-                    }
-                }
-                .buttonStyle(.borderless)
-            
                 HStack {
                     Button {
                         order.remove(item: item)

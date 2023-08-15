@@ -11,6 +11,7 @@ struct OrdersHistoryView: View {
     @State private var pickerChoice = "Current"
     @State private var isPresentDetailView = false
     
+    // нужно использовать стейт или стейт обжект для отслеживания изменений  
     static var currentOrders = [Order]()
     static var archiveOrders = [Order]()
     
@@ -28,7 +29,7 @@ struct OrdersHistoryView: View {
                 Color.black
                     .opacity(0.8)
                 
-                VStack (spacing: 10) {
+                VStack(spacing: 10) {
                     Picker("Current or Archive", selection: $pickerChoice) {
                         ForEach(currentOrArchive, id: \.self) {
                             Text($0)
@@ -67,6 +68,7 @@ struct OrdersHistoryView: View {
                 }
                 .navigationTitle("-")
                 .navigationBarTitleDisplayMode(.inline)
+                
             }
         }
     }

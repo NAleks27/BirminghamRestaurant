@@ -33,6 +33,12 @@ struct ConfirmBasketView: View {
                     Button("Yes") {
                         order.items += basket.items
                         order.sortingOrder()
+                        
+//                        if !OrdersHistoryView.currentOrders.contains(order) {
+//                            order.sortingOrder()
+//                        }
+                            
+                        
                         dismiss()
                         basket.items = []
                     }

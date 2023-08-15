@@ -20,14 +20,6 @@ struct CheckoutView: View {
     @State private var showingPaymentAlert = false
     
     let paymentTypes = ["Cash", "Credit Card"]
-    let tipAmounts = [0, 10, 15, 20, 25]
-    
-    var totalPrice: String {
-        let total = Double(order.total)
-        let tipValue = total / 100 * Double(tipAmount)
-        totalTips = tipValue
-        return (total + tipValue).formatted(.currency(code: "USD"))
-    }
 
     var body: some View {
         Form {
@@ -48,15 +40,6 @@ struct CheckoutView: View {
                     TextField("Enter your iDine ID", text: $loyaltyNumber)
                 }
             }
-            
-//            Section("Add a tip?") {
-//                Picker("Percentage:", selection: $tipAmount) {
-//                    ForEach(tipAmounts, id: \.self) {
-//                        Text("\($0)%")
-//                    }
-//                }
-//                .pickerStyle(SegmentedPickerStyle())
-//            }
             
             Section("Total: \(order.total)$") {
                 Button("Confirm order") {

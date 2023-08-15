@@ -12,6 +12,8 @@ struct TakeAwayItemDetails: View {
     
     let item: MenuItem
     
+    @EnvironmentObject var favorites: Favorites
+    
     var body: some View {
         VStack {
             Image(item.mainImage)
@@ -26,6 +28,20 @@ struct TakeAwayItemDetails: View {
                 .foregroundColor(.black)
                 .background(.gray.opacity(0.3))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
+            
+            Button {
+                if !favorites.favorites.contains(item) {
+                    favorites.add(item: item)
+                } else {
+                    favorites.remove(item: item)
+                }
+            } label: {
+                Image(systemName: favorites.favorites.contains(item) ? "star.fill" : "star")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(favorites.favorites.contains(item) ? .yellow : .gray)
+                    .padding()
+            }
             
             Spacer()
             
@@ -44,5 +60,6 @@ struct TakeAwayItemDetails: View {
 struct TakeAwayItemDetails_Previews: PreviewProvider {
     static var previews: some View {
         TakeAwayItemDetails(order: Order(), item: MenuItem.example)
+            .environmentObject(Favorites())
     }
 }
